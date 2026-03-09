@@ -3,88 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме Разработчика</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключите ваш CSS файл -->
+    <title>Нурбек Тохиржонов · Резюме</title>
+    <!-- Подключаем шрифт Inter для современного вида -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome для иконок (необязательно, но стильно) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        header {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-        }
-        h1 {
-            margin: 0;
-        }
-        section {
-            background: white;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #333;
-        }
-        .contact-info {
-            margin-bottom: 20px;
-        }
-        .skills, .experience, .education {
-            list-style-type: none;
             padding: 0;
+            box-sizing: border-box;
         }
-        .skills li, .experience li, .education li {
-            margin-bottom: 10px;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecf2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.5;
+            color: #1a2639;
+        }
+
+        /* Главный карточный контейнер */
+        .resume-card {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25), 0 8px 20px -8px rgba(0,20,40,0.15);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* Шапка с градиентом */
+        header {
+            background: linear-gradient(120deg, #0f172a, #1e293b, #0b1e33);
+            color: white;
+            padding: 3rem 2.5rem 2.5rem 2.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #d9e2ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #b0c4de;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        header p i {
+            color: #3b82f6;
+            font-size: 1.2rem;
+        }
+
+        /* Секции внутри карточки */
+        section {
+            padding: 1.8rem 2.5rem;
+            background: white;
+            transition: background 0.2s;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Заголовки секций */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        h2 i {
+            color: #3b82f6;
+            font-size: 1.6rem;
+        }
+
+        /* Контактная информация */
+        .contact-info {
+            background-color: #f8fafc;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.7rem;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #1e293b;
+        }
+
+        .contact-info i {
+            width: 1.5rem;
+            color: #3b82f6;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #a5c9ff;
+        }
+
+        .contact-info a:hover {
+            color: #1d4ed8;
+            border-bottom: 1px solid #2563eb;
+        }
+
+        /* Списки навыков, опыта, образования */
+        .skills ul, .experience ul, .education ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skills li {
+            background: #eef2ff;
+            color: #1e3a8a;
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+        }
+
+        .skills li:hover {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            transform: scale(1.02);
+        }
+
+        /* Опыт и образование — стилизуем как карточки записей */
+        .experience ul, .education ul {
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .experience li, .education li {
+            background: #f9f9fc;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 4px 10px -4px rgba(0,0,0,0.05);
+            font-weight: 500;
+            transition: box-shadow 0.2s;
+        }
+
+        .experience li:hover, .education li:hover {
+            box-shadow: 0 8px 20px -8px rgba(37,99,235,0.2);
+        }
+
+        .experience li strong, .education li strong {
+            color: #0f172a;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience li, .education li {
+            color: #334155;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.95rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Адаптация под мобильные */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            header, section { padding: 1.5rem; }
+            .skills ul { gap: 0.5rem; }
+            .skills li { padding: 0.4rem 1rem; }
         }
     </style>
 </head>
 <body>
+    <div class="resume-card">
+        <header>
+            <h1>Тохиржонов Нурбек</h1>
+            <p>
+                <i class="fas fa-code"></i> Разработчик · Программист · Инженер
+            </p>
+        </header>
 
-<header>
-    <h1>Тохиржонов Нурбек</h1>
-    <p>Разработчик | Программист | Инженер</p>
-</header>
+        <section class="contact-info">
+            <h2><i class="fas fa-address-card"></i> Контактная информация</h2>
+            <p><i class="fas fa-envelope"></i> Nurbek@gmail.com</p>
+            <p><i class="fas fa-phone-alt"></i> +7 (123) 456-78-90</p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/UchihaN12" target="_blank">github.com/UchihaN12</a></p>
+        </section>
 
-<section class="contact-info">
-    <h2>Контактная информация</h2>
-    <p>Email: Nurbek@gmail.com</p>
-    <p>Телефон: +7 (123) 456-78-90</p>
-    <p>GitHub: <a href="https://github.com/UchihaN12" target="_blank">github.com/UchihaN12</a></p>
-</section>
+        <section class="skills">
+            <h2><i class="fas fa-cog"></i> Навыки</h2>
+            <ul>
+                <li>HTML, CSS, JavaScript</li>
+                <li>React, Angular, Vue.js</li>
+                <li>Node.js, Express</li>
+                <li>Python, Django</li>
+                <li>SQL, MongoDB</li>
+            </ul>
+        </section>
 
-<section class="skills">
-    <h2>Навыки</h2>
-    <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>React, Angular, Vue.js</li>
-        <li>Node.js, Express</li>
-        <li>Python, Django</li>
-        <li>SQL, MongoDB</li>
-    </ul>
-</section>
+        <section class="experience">
+            <h2><i class="fas fa-briefcase"></i> Опыт работы</h2>
+            <ul>
+                <li><strong>Компания A</strong> — Разработчик (2020 — настоящее время)</li>
+            </ul>
+        </section>
 
-<section class="experience">
-    <h2>Опыт работы</h2>
-    <ul>
-        <li><strong>Компания A</strong> — Разработчик (2020 - настоящее время)</li>
-    </ul>
-</section>
+        <section class="education">
+            <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
+            <ul>
+                <li><strong>Университет A</strong> — Бакалавр в области информатики (2014 – 2018)</li>
+            </ul>
+        </section>
 
-<section class="education">
-    <h2>Образование</h2>
-    <ul>
-        <li><strong>Университет A</strong> — Бакалавр в области информатики (2014 - 2018)</li>
-    </ul>
-</section>
-
-<footer style="text-align:center; margin-top:20px;">
-    <p>&copy; 2023 Ваше Имя. Все права защищены.</p>
-</footer>
-
+        <footer>
+            <p>&copy; 2025 Нурбек Тохиржонов. Все права защищены.</p>
+        </footer>
+    </div>
 </body>
 </html>
